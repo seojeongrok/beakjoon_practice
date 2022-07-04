@@ -1,3 +1,5 @@
+# 숫자가 바뀌면 cnt + 1
+# 맨 뒤에 숫자는 따로 고려
 zero_cnt, one_cnt = 0, 0
 
 s = input()
