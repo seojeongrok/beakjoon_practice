@@ -1,36 +1,35 @@
 n, m = map(int, input().split())
 
-arr = []
+dna = []
 
-# 문자열을 list형식으로 담아준다
 for i in range(n):
-    arr.append(list(map(str, input())))
+    dna.append(list(map(str, input())))
 
-cnt, hap = 0, 0
+cnt = 0
 result = ''
 for i in range(m):
     a, c, g, t = 0, 0, 0, 0
     for j in range(n):
-        if arr[j][i] == 'T':
+        if dna[j][i] == 'T':
             t += 1
-        elif arr[j][i] == 'A':
+        elif dna[j][i] == 'A':
             a += 1
-        elif arr[j][i] == 'G':
+        elif dna[j][i] == 'G':
             g += 1
-        elif arr[j][i] == 'C':
+        elif dna[j][i] == 'C':
             c += 1
-    if max(a,c,g,t) == a:
+    if max(a, c, g, t) == a:
         result += 'A'
-        hap += c + g +t
-    elif max(a,c,g,t) == c:
+        cnt += c + g + t
+    elif max(a, c, g, t) == c:
         result += 'C'
-        hap += a + g +t
-    elif max(a,c,g,t) == g:
+        cnt += a + g + t
+    elif max(a, c, g, t) == g:
         result += 'G'
-        hap += a + c +t
-    elif max(a,c,g,t) == t:
+        cnt += a + c + t
+    elif max(a, c, g, t) == t:
         result += 'T'
-        hap += c + g + a
-    
+        cnt += c + g + a
+
 print(result)
-print(hap)
+print(cnt)
