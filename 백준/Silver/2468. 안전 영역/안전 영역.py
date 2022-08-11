@@ -1,11 +1,13 @@
 from collections import deque
-import sys
-input = sys.stdin.readline
+from sys import stdin
+
+input = stdin.readline
  
 N = int(input())
 graph = [list(map(int, input().split())) for _ in range(N)]
-graph_min = min(map(min, graph))    
-graph_max = max(map(max, graph))    
+g_min = min(map(min, graph))    
+g_max = max(map(max, graph))    
+
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
@@ -27,9 +29,9 @@ def bfs(x, y, safe_area):
                     q.append([nx, ny])
                     
                     
-max_safe_area = graph_min  
+max_safe_area = g_min  
 
-for safe_area in range(graph_min, graph_max+1):
+for safe_area in range(g_min, g_max+1):
     visited = [[0] * N for _ in range(N)]
     tmp = 0
     for i in range(N):
