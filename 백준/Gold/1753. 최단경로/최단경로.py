@@ -28,7 +28,7 @@ def dijkstra(start):
 
             if next_w < d[n]:
                 d[n] = next_w
-                heapq.heappush(q, [next_w, n])
+                heapq.heappush(q, (next_w, n))
 
 dijkstra(K)
 
