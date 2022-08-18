@@ -5,32 +5,32 @@ INF = float('inf')
 V, E = map(int, sys.stdin.readline().split())
 K = int(sys.stdin.readline())
 graph = [[] for _ in range(V + 1)]
-answer = [INF] * (V + 1)
+d = [INF] * (V + 1)
 q = []
 
 
 for i in range(E):
     u, v, w = map(int, sys.stdin.readline().split())
-    graph[u].append([v, w])
+    graph[u].append((v, w))
 
 def dijkstra(start):
-    answer[start] = 0
-    heapq.heappush(q, [0, start])
+    d[start] = 0
+    heapq.heappush(q, (0, start))
 
     while q:
-        current_w, current_node = heapq.heappop(q)
+        weight, node = heapq.heappop(q)
 
-        if answer[current_node] < current_w:
+        if d[node] < weight:
             continue
 
-        for next_node, weight in graph[current_node]:
-            next_w = current_w + weight
+        for n, w in graph[node]:
+            next_w = weight + w
 
-            if next_w < answer[next_node]:
-                answer[next_node] = next_w
-                heapq.heappush(q, [next_w, next_node])
+            if next_w < d[n]:
+                d[n] = next_w
+                heapq.heappush(q, [next_w, n])
 
 dijkstra(K)
 
-for i in answer[1:]:
+for i in d[1:]:
     print(i if i != INF else "INF")
