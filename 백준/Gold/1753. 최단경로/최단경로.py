@@ -15,10 +15,10 @@ for i in range(E):
 
 def dijkstra(start):
     d[start] = 0
-    heapq.heappush(q, (start, 0))
+    heapq.heappush(q, (0, start))
 
     while q:
-        node, weight = heapq.heappop(q)
+        weight, node = heapq.heappop(q)
 
         if d[node] < weight:
             continue
@@ -28,7 +28,7 @@ def dijkstra(start):
 
             if next_w < d[n]:
                 d[n] = next_w
-                heapq.heappush(q, (n, next_w))
+                heapq.heappush(q, (next_w, n))
 
 dijkstra(K)
 
