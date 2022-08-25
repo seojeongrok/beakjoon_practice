@@ -9,8 +9,7 @@ dy = [0, 1, 0, -1]
 
 n, l, r = map(int, input().split())
 
-country = list()
-a_list = list()
+country = []
 for i in range(n):
     country.append(list(map(int, input().split())))
 
